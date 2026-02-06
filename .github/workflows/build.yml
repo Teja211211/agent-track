@@ -25,6 +25,12 @@ jobs:
       - name: Generate Native Folders
         run: flutter create .
 
+      # --- THIS IS THE NEW FIX ---
+      - name: Fix Android Min SDK Version
+        run: |
+          sed -i 's/minSdkVersion .*/minSdkVersion 23/' android/app/build.gradle
+      # ---------------------------
+
       - name: Get Dependencies
         run: flutter pub get
 
