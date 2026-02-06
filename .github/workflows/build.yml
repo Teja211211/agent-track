@@ -23,13 +23,11 @@ jobs:
           channel: 'stable'
 
       - name: Generate Native Folders
-        run: flutter create .
+        run: flutter create --project-name agent_track .
 
-      # --- THIS IS THE NEW FIX ---
       - name: Fix Android Min SDK Version
         run: |
           sed -i 's/minSdkVersion .*/minSdkVersion 23/' android/app/build.gradle
-      # ---------------------------
 
       - name: Get Dependencies
         run: flutter pub get
